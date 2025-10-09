@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Animales Exóticos{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Animales Exóticos</h2>
+<p class="lead">El reino animal es fascinante y diverso. A continuación algunos ejemplos:</p>
+
+<h4>Acuáticos</h4>
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/delfin.jpg') }}" class="img-fluid rounded">
+        <p>Delfín — conocido por su inteligencia y sociabilidad.</p>
+    </div>
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/pezleon.jpg') }}" class="img-fluid rounded">
+        <p>Pez León — un animal colorido pero venenoso.</p>
+    </div>
+</div>
+
+<h4 class="mt-4">Terrestres</h4>
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/tigre.jpg') }}" class="img-fluid rounded">
+        <p>Tigre — el felino más grande del mundo.</p>
+    </div>
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/elefante.jpg') }}" class="img-fluid rounded">
+        <p>Elefante — símbolo de fuerza y memoria.</p>
+    </div>
+</div>
+
+<h4 class="mt-4">Aéreos</h4>
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/guacamaya.jpg') }}" class="img-fluid rounded">
+        <p>Guacamaya — un ave tropical de colores vibrantes.</p>
+    </div>
+    <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/aguila.jpg') }}" class="img-fluid rounded">
+        <p>Águila — símbolo de libertad y poder.</p>
+    </div>
+</div>
+{% endblock %}
