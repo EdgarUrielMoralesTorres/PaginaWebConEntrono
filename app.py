@@ -1,7 +1,8 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request,redirect,url_for,flash
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY']='una_clave_secreta_muy_larga_y_dificil_de_advinar'
 @app.route('/')
 def main():
     return render_template('base.html')
@@ -22,5 +23,37 @@ def mav():
 def Ace():
     return render_template('AcercaDe.html')
 
+@app.route('/registrate')
+def Regi():
+    return render_template('registrate.html')
+
+@app.route('/iniciaSes')
+def Inicia():
+    return render_template('iniciaSes.html')
+
+@app.route('/obtenerinfo',methods=("GET","POST"))
+def Obt():
+    error=None
+    if request.method == "POST":
+        NombreCompleto=request.form["NombreCompleto"]
+        Dia=request.form["Dia"]
+        Mes=request.form["Mes"]
+        Año=request.form["Año"]
+        Genero=request.form["Genero"]
+        email=request.form["email"]
+        Contra=request.form["Contra"]
+        ContraPru=request.form["ContraPru"]
+        tel=request.form["tel"]
+
+        if Contra != ContraPru:
+            error = "La contraseña no coincide"
+
+        if error is not None:
+            flash(error, "error")
+            return render_template("registrate.html")
+        else:
+            flash(f"Registro exitoso para el usuario: {NombreCompleto}", "success")
+            return render_template("base.html")
+        
 if __name__ == '__main__':
     app.run(debug=True)
