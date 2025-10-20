@@ -38,7 +38,7 @@ def Obt():
         NombreCompleto=request.form["NombreCompleto"]
         Dia=request.form["Dia"]
         Mes=request.form["Mes"]
-        Año=request.form["Año"]
+        Año = int(request.form["Año"])
         Genero=request.form["Genero"]
         email=request.form["email"]
         Contra=request.form["Contra"]
@@ -47,6 +47,9 @@ def Obt():
 
         if Contra != ContraPru:
             error = "La contraseña no coincide"
+        
+        if Año > 2006:
+            error ="Eres menor de edad"
 
         if error is not None:
             flash(error, "error")
